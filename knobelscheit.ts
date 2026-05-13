@@ -1,7 +1,10 @@
-export class knobelsheit {
-    private umgeklapt = new Set<number>();
+import { Wuerfel } from "./wuerfel.ts";
 
-    anzeige(): string[] = [];
+
+export class Knobelscheit {
+    private umgeklappt = new Set<number>();
+
+    public anzeige(): string {
      const felder: string[] = [];
         for (let i = 1; i <= 9; i++) {
             felder.push(this.umgeklappt.has(i) ? "X" : i.toString());
@@ -30,3 +33,8 @@ export class knobelsheit {
         for (const n of unique) this.umgeklappt.add(n);
         return true;
     }   
+
+    getCubeSum(): number {
+        return Wuerfel.throw().reduce((acc, n) => acc + n, 0);
+    }
+}
